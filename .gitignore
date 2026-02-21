@@ -1,0 +1,5 @@
+.env
+dollie
+__pycache__
+*/**DS_Store
+
