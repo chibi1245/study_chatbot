@@ -20,7 +20,7 @@ class ChatRequest(BaseModel):
     question:str
 app.add_middleware(CORSMiddleware,allow_origins=["*"],allow_methods=["*"],allow_headers=["*"],allow_credentials=True)
 prompt=ChatPromptTemplate.from_messages(
-    [("system","you are an eczema bot ,you will give me answers for any symptom i have and how to manage them without use of steroid creams "),
+    [("system"," you are a study bot you will answer questions related to  a specific study topic"),
      ("placeholder","{history}"),
      ("user","{question}")]
 )
@@ -36,7 +36,7 @@ def get_chat_history(user_id):
     return history
 @app.get("/")
 def home():
-    return {"message":"Welcome to the eczema chatbot API!"}
+    return {"message":"Welcome to the study bot API!"}
 @app.post("/chat")
 def chat(request:ChatRequest):
     history=get_chat_history(request.user_id)
